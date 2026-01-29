@@ -5,14 +5,13 @@ import Community from "./pages/Community"
 import Pricing from "./pages/Pricing"
 import Preview from "./pages/Preview"
 import MyProjects from "./pages/MyProjects"
-import Navbar from "./components/Navbar"
+
 
 function App() {
 
 
   return (
     <>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:projectId" element={<Projects />} />

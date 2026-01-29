@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
 
-      <nav className="z-50 flex items-center justify-between w-full py-4 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur  text-white border-slate-800">
+      <nav className="z-50 flex items-center justify-between w-full pt-2 px-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur  text-white border-slate-800">
         <Link to="/">
           <img src={assets.navLogo} alt="Logo" className='h-10 sm:h-8' />
         </Link>

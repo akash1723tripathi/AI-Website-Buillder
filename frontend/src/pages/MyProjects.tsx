@@ -4,6 +4,7 @@ import { Loader2Icon, PlusIcon, TrashIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { dummyProjects } from '../assets/assets';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const MyProjects = () => {
   const [loading, setLoading] = React.useState(true);
@@ -29,6 +30,7 @@ const MyProjects = () => {
 
   return (
     <>
+      <Navbar />
       {/* BACKGROUND IMAGE */}
       <img src="https://images.unsplash.com/photo-1712397943847-e104395a1a8b?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="fixed inset-0 -z-10 w-full h-full object-cover opacity-45" alt="" />
       <div className='px-4 md:px-16 lg:px-24 xl:px-32'>
@@ -40,8 +42,9 @@ const MyProjects = () => {
           <div className='py-10 min-h-[80vh]'>
             <div className='flex items-center justify-between mb-12'>
               <h1 className='text-2xl font-medium text-white'>My Projects</h1>
+              
               <button onClick={() => navigate('/')}
-                className='flex items-center gap-2 text-white px-3 sm:px-6 py-1 sm:py-2 rounded bg-linear-to-br from-indigo-500 to-indigo-600 active:scale-95 transition-all'>
+                className='flex items-center gap-2  sm:px-6  sm:py-2   active:scale-95 transition-all group relative ml-auto justify-center bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2.5 rounded-full text-white font-medium  duration-300  hover:bg-white/20 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] disabled:opacity-80 disabled:cursor-not-allowed'>
                 <PlusIcon size={18} /> Create New
               </button>
             </div>

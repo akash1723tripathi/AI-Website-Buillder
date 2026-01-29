@@ -1,6 +1,7 @@
 import React from "react"
 import { appPlans } from "../assets/assets"
 import Footer from "../components/Footer"
+import Navbar from "../components/Navbar"
 
 interface Plan {
   id: string,
@@ -20,10 +21,10 @@ const Pricing = () => {
 
   return (
     <>
-
+      <Navbar/>
       <img src="https://images.unsplash.com/photo-1712397943847-e104395a1a8b?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="fixed inset-0 -z-10 w-full h-full object-cover opacity-45" alt="" />
 
-      <div className="w-full max-w-5xl mx-auto max-md:px-4 min-h-[80vh] z-20">
+      <div className="w-full max-w-5xl mt-5 mx-auto max-md:px-4 min-h-[80vh] z-20">
         <div className="text-center " >
           <h2 className=" text-gray-100 text-4xl font-bold mb-3 ">Choose Your Plan</h2>
           <p className="text-gray-400 text-sm max-w-md mx-auto mt-2">Start for free and scale up as you grow. Find the perfect plan fro your creation needs.</p>
