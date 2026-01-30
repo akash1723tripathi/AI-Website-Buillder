@@ -47,7 +47,7 @@ const EditorPanel = ({ selectedElement, onUpdate, onClose }: EditorPanelProps) =
 
       return (
             <>
-                  <div className="absolute top-4 right-4 w-80 bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/50 border border-white/10 p-5 z-50 animate-in fade-in slide-in-from-right-5 ring-1 ring-white/5">
+                  <div className="absolute top-4 right-4 w-80 bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/50 border border-white/10 p-5 z-50 animate-fade-in fade-in ring-1 ring-white/5">
 
                         {/* Header */}
                         <div className="flex justify-between items-center mb-6 border-b border-gray-700/50 pb-4">
