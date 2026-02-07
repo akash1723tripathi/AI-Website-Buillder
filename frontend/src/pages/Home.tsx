@@ -2,18 +2,38 @@ import { Loader2Icon } from 'lucide-react'
 import React from 'react'
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
+import { authClient } from '@/lib/auth-client'
+import { toast } from 'sonner'
+import api from '@/configs/axios'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+
+      const {data:session} = authClient.useSession();
       const [input, setInput] = useState("")
       const [loading, setLoading] = useState(false)
-      const onSubmitHandler = (e: React.FormEvent) => {
+      const navigate = useNavigate();
+
+      const onSubmitHandler = async (e: React.FormEvent) => {
             e.preventDefault();
             setLoading(true);
-            //simulate APi call
 
-            setTimeout(() => {
+            try {
+                  if(!session?.user){
+                        return toast.error('Please sign in to create a project')
+                  }else if(!input.trim()){
+                        return toast.error('Please provide a valid prompt')
+                  }
+                  const {data}= await api.post('api/user/project',{initial_prompt:input});
                   setLoading(false);
-            }, 3000)
+
+                  navigate(`/projects/${data.projectId}`)
+                  
+            } catch (error:any) {
+                  setLoading(false);
+                  toast.error(error?.response?.data?.message || 'Failed to create project');
+                  console.log(error);
+            }
       }
 
 

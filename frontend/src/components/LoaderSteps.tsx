@@ -10,20 +10,19 @@ const steps = [
 
 const STEP_DURATION = 45000
 
-const [current, setCurrent] = useState(0)
-
-useEffect(()=>{
-      const interval = setInterval(() => {
-            setCurrent((s)=> (s + 1) % steps.length)
-      }, STEP_DURATION)
-      return () => clearInterval(interval)
-},[])
-
-const Icon = steps[current].icon;
-
 const LoaderSteps = () => {
+      const [current, setCurrent] = useState(0)
+
+      useEffect(() => {
+            const interval = setInterval(() => {
+                  setCurrent((s) => (s + 1) % steps.length)
+            }, STEP_DURATION)
+            return () => clearInterval(interval)
+      }, [])
+
+      const Icon = steps[current].icon;
       return (
-            <div className="w-full h-full flex flex-col items-center justify-center bg-gray-950 relative overflow-hidden text-white">
+            <div className="w-full h-full min-h-screen flex flex-col items-center justify-center bg-gray-950 relative overflow-hidden text-white">
                   <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-purple-500/10 to-fuchsia-500/10 blur-3xl animate-pulse"></div>
 
                   <div className="relative z-10 w-32 h-32 flex items-center justify-center">

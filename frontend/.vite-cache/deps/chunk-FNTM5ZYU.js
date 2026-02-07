@@ -1,7 +1,7 @@
 import {
   __toESM,
   require_react
-} from "./chunk-5VW2NNEB.js";
+} from "./chunk-S63IS3LU.js";
 
 // node_modules/react-router/dist/index.js
 var React = __toESM(require_react());
@@ -4339,4 +4339,4 @@ react-router/dist/index.js:
    * @license MIT
    *)
 */
-//# sourceMappingURL=chunk-K3CAZO6O.js.map
+//# sourceMappingURL=chunk-FNTM5ZYU.js.map

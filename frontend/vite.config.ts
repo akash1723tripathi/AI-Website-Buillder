@@ -10,12 +10,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 7000,
-    strictPort: true,
-    force: true, // Force optimization
+    port: 5173,
+    strictPort: true, // Good to keep: ensures you know which port you are on
   },
-  optimizeDeps: {
-    force: true, // Force re-optimization
-  },
-  cacheDir: '.vite-cache', // Use custom cache directory
 })

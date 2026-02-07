@@ -1,7 +1,4 @@
 import {
-  require_react_dom
-} from "./chunk-DHEZ6HTF.js";
-import {
   AbortedDeferredError,
   Action,
   Await,
@@ -63,11 +60,14 @@ import {
   useRoutes,
   useRoutesImpl,
   warning
-} from "./chunk-K3CAZO6O.js";
+} from "./chunk-FNTM5ZYU.js";
+import {
+  require_react_dom
+} from "./chunk-TDQUXRWX.js";
 import {
   __toESM,
   require_react
-} from "./chunk-5VW2NNEB.js";
+} from "./chunk-S63IS3LU.js";
 
 // node_modules/react-router-dom/dist/index.js
 var React = __toESM(require_react());

@@ -1,61 +1,97 @@
 {
-  "hash": "663b5287",
-  "configHash": "16855414",
-  "lockfileHash": "28089d6e",
-  "browserHash": "ee1b0113",
+  "hash": "a269352a",
+  "configHash": "a24b7c4d",
+  "lockfileHash": "acb33193",
+  "browserHash": "88b15410",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "a19150e4",
+      "fileHash": "aefd2740",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "d25e08e0",
+      "fileHash": "51ad8bfb",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "261be899",
+      "fileHash": "2f6440e2",
       "needsInterop": true
     },
+    "@daveyplate/better-auth-ui": {
+      "src": "../../node_modules/@daveyplate/better-auth-ui/dist/index.js",
+      "file": "@daveyplate_better-auth-ui.js",
+      "fileHash": "463d4324",
+      "needsInterop": false
+    },
+    "better-auth/react": {
+      "src": "../../node_modules/better-auth/dist/client/react/index.mjs",
+      "file": "better-auth_react.js",
+      "fileHash": "305d8a9f",
+      "needsInterop": false
+    },
     "lucide-react": {
-      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.mjs",
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
       "file": "lucide-react.js",
-      "fileHash": "6d017dbe",
+      "fileHash": "7e18d576",
+      "needsInterop": false
+    },
+    "next-themes": {
+      "src": "../../node_modules/next-themes/dist/index.mjs",
+      "file": "next-themes.js",
+      "fileHash": "7348dc43",
       "needsInterop": false
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "321f4e2b",
+      "fileHash": "7f35593c",
       "needsInterop": true
     },
     "react-router": {
       "src": "../../node_modules/react-router/dist/index.js",
       "file": "react-router.js",
-      "fileHash": "c853902f",
+      "fileHash": "a4288846",
       "needsInterop": false
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "eeff9acd",
+      "fileHash": "5280cabb",
+      "needsInterop": false
+    },
+    "sonner": {
+      "src": "../../node_modules/sonner/dist/index.mjs",
+      "file": "sonner.js",
+      "fileHash": "0ccf2145",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-DHEZ6HTF": {
-      "file": "chunk-DHEZ6HTF.js"
+    "chunk-BY3G6F2N": {
+      "file": "chunk-BY3G6F2N.js"
     },
-    "chunk-K3CAZO6O": {
-      "file": "chunk-K3CAZO6O.js"
+    "chunk-IE7UDDCP": {
+      "file": "chunk-IE7UDDCP.js"
     },
-    "chunk-5VW2NNEB": {
-      "file": "chunk-5VW2NNEB.js"
+    "chunk-ZACOGBZ4": {
+      "file": "chunk-ZACOGBZ4.js"
+    },
+    "chunk-FNTM5ZYU": {
+      "file": "chunk-FNTM5ZYU.js"
+    },
+    "chunk-TDQUXRWX": {
+      "file": "chunk-TDQUXRWX.js"
+    },
+    "chunk-W6QA6V7Z": {
+      "file": "chunk-W6QA6V7Z.js"
+    },
+    "chunk-S63IS3LU": {
+      "file": "chunk-S63IS3LU.js"
     }
   }
 }

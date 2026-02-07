@@ -2,6 +2,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "re
 import type { Project } from "../types";
 import { iframeScript } from "../assets/assets";
 import EditorPanel from "./EditorPanel";
+import LoaderSteps from "./LoaderSteps";
 
 export interface ProjectPreviewRef {
       getCode: () => string | undefined;
@@ -92,7 +93,7 @@ const ProjectPreview = forwardRef<ProjectPreviewRef, ProjectPreviewProps>(({ pro
 
       return (
             <>
-                  <div className="relative h-full bg-gray-900 flex-1 rounded-xl overflow-hidden max-sm:ml-2">
+                  <div className="relative h-full bg-gray-900 flex-1 rounded-xl overflow-hidden max-sm:ml-2 border-2">
                         {project.current_code ? (
                               <>
                                     <iframe
@@ -112,7 +113,7 @@ const ProjectPreview = forwardRef<ProjectPreviewRef, ProjectPreviewProps>(({ pro
                         ) :
                               isGenerating && (
                                     <div>
-                                          Loading
+                                          <LoaderSteps />
                                     </div>
                               )
                         }

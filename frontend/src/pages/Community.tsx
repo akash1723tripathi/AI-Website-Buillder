@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import type { Project } from '../types';
-import { Loader2Icon, PlusIcon, TrashIcon } from 'lucide-react';
+import { Loader2Icon } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { dummyProjects } from '../assets/assets';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import api from '@/configs/axios';
+import { toast } from 'sonner';
 
 const Community = () => {
   const [loading, setLoading] = React.useState(true);
@@ -12,12 +13,15 @@ const Community = () => {
   const navigate = useNavigate();
 
   const fetchProjects = async () => {
-    setProjects(dummyProjects)
-
-    //simulate api call
-    setTimeout(() => {
+    try {
+      const {data} = await api.get(`/api/project/published`);
+      setProjects(data.projects);
       setLoading(false);
-    }, 1000)
+    } catch (error:any) {
+      console.log(error);
+      setLoading(false);
+      toast.error(error?.response?.data?.message || "Failed to fetch projects");
+    }
   }
 
 
@@ -45,7 +49,7 @@ const Community = () => {
               {projects.map((project) => (
                 <Link  
                  key={project.id} 
-                 to={`/projects/${project.id}`}
+                 to={`/view/${project.id}`}
                  target='_blank'
                  className='w-72 max-sm:mx-auto cursor-pointer bg-gray-900/60 border border-gray-700 rounded-lg overflow-hidden group hover:border-indigo-800/80 transition-all duration-300'>
 

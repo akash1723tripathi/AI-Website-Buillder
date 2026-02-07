@@ -2,14 +2,19 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import type { Project } from '../types';
-import { ArrowBigDownDash, Eye, EyeOff, Maximize, Home, Laptop, Loader2, MessageSquareCode, MessageSquare, Save, Smartphone, Tablet, X } from 'lucide-react';
-import { dummyConversations, dummyProjects, dummyVersion } from '../assets/assets';
+import { ArrowBigDownDash, Eye, EyeOff, Maximize, Home, Laptop, Loader2, MessageSquare, Save, Smartphone, Tablet, X } from 'lucide-react';
+
 import Sidebar from '../components/Sidebar';
 import ProjectPreview, { type ProjectPreviewRef } from '../components/ProjectPreview';
+import api from '@/configs/axios';
+import { toast } from 'sonner';
+import { authClient } from '@/lib/auth-client';
+import { set } from 'zod';
 
 const Projects = () => {
   const { projectId } = useParams()
   const navigate = useNavigate();
+  const {data:session, isPending} = authClient.useSession(); 
 
   const [project, setProject] = useState<Project | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
@@ -20,19 +25,31 @@ const Projects = () => {
   const projectPreviewRef = useRef<ProjectPreviewRef>(null);
 
   const fetchProject = async () => {
-    const project = dummyProjects.find((proj) => proj.id === projectId);
-    setTimeout(() => {
-      if (project) {
-        setProject({ ...project, conversation: dummyConversations, versions: dummyVersion });
-        setLoading(false);
-        setIsGenerating(project.current_code ? false : true);
-        console.log(project);
-      }
-    }, 2000);
+    try {
+      const {data} = await api.get(`/api/user/project/${projectId}`)
+      setProject(data.project)
+      setIsGenerating(data.project.current_code ? false : true)
+      setLoading(false)
+    } catch (error:any) {
+      toast.error(error?.response?.data?.message || 'Failed to load project')
+      console.error(error)
+    }
   }
 
   const saveProject = async () => {
-
+    if(!projectPreviewRef.current) return;
+    const code = projectPreviewRef.current.getCode();
+    if(!code) return;
+    setIsSaving(true);
+    try {
+      const {data} = await api.put(`/api/project/save/${projectId}`,{ code })
+      toast.success('Project saved successfully') 
+    } catch (error:any) {
+      toast.error(error?.response?.data?.message || 'Failed to save project')
+      console.log(error)
+    }finally{
+      setIsSaving(false);
+    }
   }
 
   //Download the code as a zip file -- index.html
@@ -53,13 +70,33 @@ const Projects = () => {
   }
 
   const togglePublish = async () => {
-
+    try {
+      const {data} = await api.get(`/api/user/publish-toggle/${projectId}`)
+      toast.success('Project published successfully') 
+      setProject((prev)=> prev? ({...prev,isPublished: !prev.isPublished}):null)
+    } catch (error:any) {
+      toast.error(error?.response?.data?.message || 'Failed to publish project')
+      console.log(error)
+    }finally{
+      setIsSaving(false);
+    }
   }
 
+  useEffect(()=>{
+    if(session?.user){
+      fetchProject();
+    }else if(!isPending && !session?.user){
+      navigate('/')
+      toast("Please login to access the project")
+    }
+  },[session?.user])
 
   useEffect(() => {
-    fetchProject();
-  }, [])
+    if(project && !project.current_code){
+      const IntervalId = setInterval(fetchProject,10000)
+      return () => clearInterval(IntervalId);
+    }
+  }, [project])
 
   if (loading) {
     return (
