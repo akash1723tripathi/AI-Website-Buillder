@@ -8,6 +8,8 @@ import MyProjects from "./pages/MyProjects"
 import { Toaster } from "@/components/ui/sonner"
 import AuthPage from "./pages/auth/AuthPage"
 import Loading from "./pages/Loading"
+import { AnimatePresence } from "framer-motion"
+
 
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
   return (
     <>
       <Toaster position="bottom-right" />
+      <AnimatePresence mode="wait">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:projectId" element={<Projects />} />
@@ -27,6 +30,7 @@ function App() {
         <Route path="/auth/:pathname" element={<AuthPage />} />
         <Route path="/loading" element={<Loading />} />
       </Routes>
+      </AnimatePresence>
     </>
   )
 }
